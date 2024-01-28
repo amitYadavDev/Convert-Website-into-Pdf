@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun savePDF() {
-        
+        binding?.savePdfBtn?.setOnClickListener {
+            
+        }
     }
 }
