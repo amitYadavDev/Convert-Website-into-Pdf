@@ -1,9 +1,11 @@
 package amitapps.media.webviewtopdf
 
 import amitapps.media.webviewtopdf.databinding.ActivityMainBinding
+import android.os.Build
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 
@@ -34,7 +36,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun savePDF() {
         binding?.savePdfBtn?.setOnClickListener {
-            
+            if(printWeb!=null) {
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    PrintTheWebPage()
+                } else {
+                    Toast.makeText(this, "Not available for device below Android LOLLIPOP", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "WebPage not fully loaded", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
+
+    private fun PrintTheWebPage() {
+
     }
 }
